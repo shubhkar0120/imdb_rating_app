@@ -63,7 +63,7 @@ class MovieCard extends StatelessWidget {
                 ),
               ),
             ),
-            // Text content with flexible constraints
+            // content with flexible constraints
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -17,7 +17,7 @@ class MovieRemoteDataSource {
       
       // Handle different response structures
       if (response is Map<String, dynamic>) {
-        // Try to find results in different possible paths
+        
         if (response.containsKey('results') && response['results'] is List) {
           print('Found results at response["results"]');
           return response['results'];
@@ -39,7 +39,6 @@ class MovieRemoteDataSource {
           print('Found results at response["d"]');
           return response['d'];
         } else {
-          // If we can't find results in known paths, try to use the entire response
           print('No standard results structure found, using full response');
           if (response.containsKey('titles') && response['titles'] is List) {
             return response['titles'];
@@ -49,7 +48,6 @@ class MovieRemoteDataSource {
         }
       }
       
-      // If we can't find a suitable structure, log and return empty list
       print('Unable to extract results from response: $response');
       return [];
     } catch (e) {
@@ -69,7 +67,6 @@ class MovieRemoteDataSource {
         }
       } catch (e) {
         print('First attempt to get movie details failed: $e');
-        // If the first attempt fails, we'll try alternative endpoints
       }
       
       // Try alternative endpoints if the first one failed

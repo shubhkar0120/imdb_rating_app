@@ -10,7 +10,7 @@ class ApiClient {
 
   Future<dynamic> get(String endpoint, {Map<String, dynamic>? queryParameters}) async {
     try {
-      // Log the request for debugging
+      
       print('Making API request to: $baseUrl$endpoint');
       print('Query parameters: $queryParameters');
       
@@ -20,21 +20,20 @@ class ApiClient {
         options: Options(headers: headers),
       );
       
-      // Check if response data is null
       if (response.data == null) {
         print('API returned null data for: $endpoint');
-        return {}; // Return empty map instead of null
+        return {}; 
       }
       
       return response.data;
     } on DioException catch (e) {
-      // Handle Dio-specific errors
+      
       print('Dio error: ${e.message}');
       print('Status code: ${e.response?.statusCode}');
       print('Response data: ${e.response?.data}');
       throw Exception('API request failed: ${e.message}');
     } catch (e) {
-      // Handle other errors
+      
       print('Error fetching data from $endpoint: $e');
       throw Exception('Failed to fetch data: $e');
     }

@@ -41,7 +41,7 @@ class MovieModel extends Movie {
     // Better image URL handling
     String? imageUrl;
     
-    // Try to extract image from different possible paths
+    // extract image from different possible paths
     if (json['i'] != null && json['i'] is Map) {
       // Format used by some IMDb APIs where image is under 'i' key
       if (json['i']['imageUrl'] != null) {
@@ -80,7 +80,7 @@ class MovieModel extends Movie {
       movieTitle = json['originalTitle'];
     }
     
-    // Get year, handling different formats
+    //handling different formats
     int? movieYear;
     if (json['year'] != null) {
       if (json['year'] is int) {
